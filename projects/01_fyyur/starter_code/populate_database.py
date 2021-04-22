@@ -3,38 +3,6 @@
 ## from app import db
 ## from models import Venue,Genre,Artist,Show,artist_genre_table,venue_genre_table
 
-import json
-import dateutil.parser
-import babel
-from flask import Flask, render_template, request, Response, flash, redirect, url_for, jsonify
-from flask_migrate import Migrate
-from flask_moment import Moment
-from flask_sqlalchemy import SQLAlchemy
-import logging
-from logging import Formatter, FileHandler
-from flask_wtf import Form
-from forms import *
-from models import Artist, Venue, Genre, artist_genre_table, Show, venue_genre_table
-from app import db, create_app
-from sqlalchemy import orm
-from sqlalchemy.ext.declarative import declarative_base
-import sqlalchemy as sa
-
-base = declarative_base()
-engine = sa.create_engine('postgresql://postgres:ApplePie!@localhost:5432/fyyur')
-base.metadata.bind = engine
-session = orm.scoped_session(orm.sessionmaker())(bind=engine)
-#----------------------------------------------------------------------------#
-# App Config.
-#----------------------------------------------------------------------------#
-
-# app = Flask(__name__)
-# moment = Moment(app)
-# app.config.from_object('config')
-# db.init_app(app)
-
-#db.create_all(app=create_app())
-
 musical_hop = Venue(city="San Francisco",name="The Musical Hop",state="CA",address="1015 Folsom Street",phone="123-123-1234",website="https://www.themusicalhop.com",facebook_link= "https://www.facebook.com/TheMusicalHop",
   seeking_talent=True, seeking_description="We are on the lookout for a local artist to play every two weeks. Please call us.",
   image_link="https://images.unsplash.com/photo-1543900694-133f37abaaa5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60",
